@@ -21,6 +21,7 @@ function CreatePost() {
       (response)=>{
         console.log(response)
         console.log(response.data.secure_url);
+        setImg(response.data.secure_url);
       }
     ).catch(err=>console.log(err))
     // fetch("https://api.cloudinary.com/v1_1/dcugof3zo/image/upload", {
@@ -39,7 +40,7 @@ function CreatePost() {
   return (
     <>
     <button onClick={handleShow}>
-    hi i am modal 
+    Create Post
     </button><br/>
     
           <input type="file" className='border-cyan-800' onChange={uploadImg}/>
@@ -51,25 +52,25 @@ function CreatePost() {
         
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Pen Down Your Thoughts</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form action="" className='flex flex-col gap-4'>
-        <div>
-        <label htmlFor="title" className='text-cyan-600'>Title</label>
+        <div className='flex flex-col gap-2'>
+        <label htmlFor="title" className='text-blue-500 text-2xl font-semibold'>Title</label>
           <input type="text" className='border-cyan-800' />
         </div>
-          <div>
-          <label htmlFor="des" className='text-cyan-600'>Description</label>
-          <input type="text" className='border-cyan-800' />
+          <div className='flex flex-col gap-2'>
+          <label htmlFor="des" className='text-blue-500 text-2xl font-semibold'>Description</label>
+          <input type="text" className='border-cyan-800  h-60' />
           </div>
-          <div>
-          <label htmlFor="image" className='text-cyan-600'>Image</label>
+          <div className='flex flex-col gap-2'>
+          <label htmlFor="image" className='text-blue-500 text-2xl font-semibold'>Image</label>
           <input type="file" className='border-cyan-800' />
           </div>
-          <div>
-          <label htmlFor="cate" className='text-cyan-600'>Category</label>
-          <input type="text" className='border-cyan-800' />
+          <div className='flex flex-col gap-2'>
+          <label htmlFor="cate" className='text-blue-500 text-2xl font-semibold'>Category</label>
+          <input type="text" className='border-2 border-gray-500' />
           </div>
           
           </form>
