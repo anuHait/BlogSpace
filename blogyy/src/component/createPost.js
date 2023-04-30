@@ -49,35 +49,36 @@ function CreatePost() {
         size="lg"
         onHide={handleClose}
         keyboard={false}
-        
+        className='flex flex-col justify-center items-center'
       >
-        <Modal.Header closeButton>
+        <Modal.Header         className='flex flex-col justify-center items-center'
+        >
           <Modal.Title>Pen Down Your Thoughts</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form action="" className='flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
         <label htmlFor="title" className='text-blue-500 text-2xl font-semibold'>Title</label>
-          <input type="text" className='border-cyan-800' />
+          <input type="text" className='border-2 border-blue-800 rounded-md h-38' />
         </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="des" className='text-blue-500 text-2xl font-semibold'>Description</label>
-          <input type="text" className='border-cyan-800  h-60' />
+          <input type="text" className='border-2 border-blue-800 rounded-md  h-60' />
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="image" className='text-blue-500 text-2xl font-semibold'>Image</label>
-          <input type="file" className='border-cyan-800' />
+          <input type="file" className='border-2 border-blue-800 rounded-md' />
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="cate" className='text-blue-500 text-2xl font-semibold'>Category</label>
-          <input type="text" className='border-2 border-gray-500' />
+          <input type="text" className='border-2 border-blue-800 rounded-md w-[20vw]' />
           </div>
           
           </form>
           
         </Modal.Body>
-        <Modal.Footer>
-          <button  onClick={handleClose}>
+        <Modal.Footer className='flex flex-col justify-center items-center'>
+          <button  onClick={handleClose} >
             Submit
           </button>
           
