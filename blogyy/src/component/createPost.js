@@ -39,39 +39,39 @@ function CreatePost() {
  
   return (
     <>
-    <button onClick={handleShow}>
+    <button onClick={handleShow} className='rounded-2xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold'>
     Create Post
     </button><br/>
     
-          <input type="file" className='border-cyan-800' onChange={uploadImg}/>
+          <input type="file" className='border-cyan-800 mt-5' onChange={uploadImg}/>
       <Modal
         show={show}
         size="lg"
         onHide={handleClose}
         keyboard={false}
-        className='flex flex-col justify-center items-center'
+        className='flex flex-col justify-center items-center bg-[#97DEFF]'
       >
-        <Modal.Header         className='flex flex-col justify-center items-center'
+        <Modal.Header  className='flex flex-col justify-center items-center'
         >
-          <Modal.Title>Pen Down Your Thoughts</Modal.Title>
+          <Modal.Title className='text-[#6c41b2]'>Pen Down Your Thoughts</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form action="" className='flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
         <label htmlFor="title" className='text-blue-500 text-2xl font-semibold'>Title</label>
-          <input type="text" className='border-2 border-blue-800 rounded-md h-38' />
+          <input type="text" className='border-2 border-blue-700 rounded-md h-38' />
         </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="des" className='text-blue-500 text-2xl font-semibold'>Description</label>
-          <input type="text" className='border-2 border-blue-800 rounded-md  h-60' />
+          <input type="text" className='border-2 border-blue-700 rounded-md  h-60' />
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="image" className='text-blue-500 text-2xl font-semibold'>Image</label>
-          <input type="file" className='border-2 border-blue-800 rounded-md' />
+          <input type="file" className='border-2 border-blue-700 rounded-md' />
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="cate" className='text-blue-500 text-2xl font-semibold'>Category</label>
-          <input type="text" className='border-2 border-blue-800 rounded-md w-[20vw]' />
+          <input type="text" className='border-2 border-blue-700 rounded-md w-[20vw]' />
           </div>
           
           </form>
