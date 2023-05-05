@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
-
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 function CreatePost() {
   const preset_key="gbg5x2iv";
   const cloudname="dcugof3zo";
@@ -97,8 +97,15 @@ function CreatePost() {
         </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="des" className='text-blue-500 text-2xl font-semibold'>Description</label>
-          <input type="text" className='border-2 border-blue-700 rounded-md  h-60' name="des" value={formData.des} onChange={handleChange} />
-          </div>
+          <TextareaAutosize
+        aria-label="minimum height"
+        minRows={12}
+        className=' mb-12 text-md border-2 border-blue-700 rounded-md'
+        placeholder="Your text area"
+        style={{ minWidth: 200,maxWidth:1800 }}
+        name="des" value={formData.des} onChange={handleChange}
+        />
+        </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="image" className='text-blue-500 text-2xl font-semibold'>Image</label>
           <input type="file" className='border-2 border-blue-700 rounded-md'  onChange={(e)=>{setImg(e.target.files[0])}} />
