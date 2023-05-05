@@ -10,40 +10,74 @@ function CreatePost() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const[img,setImg]=useState("");
-  const uploadImg=(event)=>{
-    const file=event.target.files[0];
-    console.log(file);
+  const[url,setUrl]=useState("");
+  const uploadImg=(image)=>{
+    console.log("Upload fnc");
+    console.log(img);
     const formData=new FormData();
-    formData.append("file",file);    
+    formData.append("file",img);    
     formData.append("upload_preset",preset_key);
-    axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`,
+   const secure_url= axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/image/upload`,
     formData).then(
       (response)=>{
         console.log(response)
-        console.log(response.data.secure_url);
-        setImg(response.data.secure_url);
+        // console.log(response.data.secure_url);
+         return response.data.secure_url;
+        // setUrl(response.data.secure_url);
+        // console.log(url);
       }
+      
+
     ).catch(err=>console.log(err))
-    // fetch("https://api.cloudinary.com/v1_1/dcugof3zo/image/upload", {
-    //     method: "POST",
-    //     body: formData,
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       //setPic(data.secure_url.toString());
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
+   return secure_url 
   }
- 
+  const [formData, setFormData] = useState({
+    title: '',
+    des: '',
+    image: '.',
+    cate:''
+  });
+  const handleChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+  // async function uploadImg(e) {
+  //   const data = new FormData();
+  //   console.log(img);
+  //   data.append("file", img);
+  //   data.append("upload_preset", preset_key);
+  //   data.append("cloud_name", cloudname);
+  //   await fetch(`https://api.cloudinary.com/v1_1/${cloudname}/upload`, {
+  //     method: "post",
+  //     body: data,
+  //   })
+  //     .then(
+  //       (resp) => resp.json()        
+  //       )
+  //     .then((data) => {
+  //       console.log(data)
+  //       setPicurl(data.secure_url);
+  //       console.log(data.url)
+  //       console.log(picurl)
+
+  //     })
+  //     .catch((err) => console.log("Error"));
+  // }
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    console.log("Handle works");
+    const picurl=await uploadImg();
+    console.log(picurl)
+   formData.image=picurl;
+    console.log(formData)  
+  }
   return (
     <>
     <button onClick={handleShow} className='rounded-2xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold'>
     Create Post
     </button><br/>
-    
-          <input type="file" className='border-cyan-800 mt-5' onChange={uploadImg}/>
       <Modal
         show={show}
         size="lg"
@@ -56,32 +90,31 @@ function CreatePost() {
           <Modal.Title className='text-[#6c41b2]'>Pen Down Your Thoughts</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form action="" className='flex flex-col gap-4'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
         <label htmlFor="title" className='text-blue-500 text-2xl font-semibold'>Title</label>
-          <input type="text" className='border-2 border-blue-700 rounded-md h-38' />
+          <input type="text" className='border-2 border-blue-700 rounded-md h-38'  name="title" value={formData.title} onChange={handleChange} />
         </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="des" className='text-blue-500 text-2xl font-semibold'>Description</label>
-          <input type="text" className='border-2 border-blue-700 rounded-md  h-60' />
+          <input type="text" className='border-2 border-blue-700 rounded-md  h-60' name="des" value={formData.des} onChange={handleChange} />
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="image" className='text-blue-500 text-2xl font-semibold'>Image</label>
-          <input type="file" className='border-2 border-blue-700 rounded-md' />
+          <input type="file" className='border-2 border-blue-700 rounded-md'  onChange={(e)=>{setImg(e.target.files[0])}} />
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="cate" className='text-blue-500 text-2xl font-semibold'>Category</label>
-          <input type="text" className='border-2 border-blue-700 rounded-md w-[20vw]' />
+          <input type="text" className='border-2 border-blue-700 rounded-md w-[20vw]' name="cate" value={formData.cate} onChange={handleChange}/>
           </div>
+          <button type="submit" className=' rounded-2xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold ' >
+            Submit
+          </button>
           
           </form>
           
         </Modal.Body>
-        <Modal.Footer className='flex flex-col justify-center items-center'>
-          <button  onClick={handleClose} >
-            Submit
-          </button>
-          
+        <Modal.Footer >
         </Modal.Footer>
       </Modal>
     

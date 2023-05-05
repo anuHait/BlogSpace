@@ -5,14 +5,16 @@ import LinesEllipsis from 'react-lines-ellipsis'
 function blogBox(props) {
   return (
     <div className='flex flex-col w-[21.6vw] gap-3 ml-3 shadow-xl rounded-lg  p-3 '>
-      <img src={props.image} alt="blog_img" className='rounded-xl h-[30.2vh]'/>
+      <div className=''>
+      <img src={props.image} alt="blog_img" className='rounded-xl  '/>
+      </div>
       <div className='flex flex-col gap-3 p-2'>
       <h2 className='text-md text-blue-500 font-semibold'>{props.cate}</h2>
       <h1 className='text-lg font-bold '>{props.title}</h1>
      <p className=' text-md text-justify leading-0'>
      <LinesEllipsis
      text={props.desc}
-     maxLine='4'
+     maxLine='3'
      ellipsis='...'
      trimRight
      basedOn='letters'
