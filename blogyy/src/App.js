@@ -5,10 +5,13 @@ import CreatePost from './component/createPost';
 import BlogBox from './component/blogBox';
 import Navbar from './component/navbar';
 import Posts from './component/posts';
-import {  Route, Routes,Navigate } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
+import Hello from './component/hello';
 function App() {
   return (
     <div className="App">
+    
+    
       <Routes>
       <Route path="/"  element={<Login/>} />
         <Route path="/posts"  element={<Posts/>} />

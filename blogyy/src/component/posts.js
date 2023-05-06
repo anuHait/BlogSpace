@@ -1,14 +1,14 @@
 import React from 'react'
 import Navbar from './navbar'
 import BlogBox from './blogBox'
+
+import Hello from './hello'
 function Posts() {
   return (
     <div>
     <Navbar/>
-    <div className='flex flex-row gap-3'>
-    <BlogBox/>
-    <BlogBox/>
-    </div>
+    <Hello/>
+    
     </div>
   )
 }

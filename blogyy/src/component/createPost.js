@@ -36,7 +36,7 @@ function CreatePost() {
     title: '',
     des: '',
     image: '.',
-    cate:''
+    cate:[]
   });
   const handleChange = e => {
     setFormData({
