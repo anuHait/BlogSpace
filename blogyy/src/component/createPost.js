@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
+//import { useCookies } from 'react-cookie';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 function CreatePost() {
   const preset_key="gbg5x2iv";
@@ -67,11 +68,15 @@ function CreatePost() {
   // }
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    console.log("Handle works");
+    //console.log("Handle works");
     const picurl=await uploadImg();
-    console.log(picurl)
+    //console.log(picurl)
    formData.image=picurl;
-    console.log(formData)  
+    //console.log(formData)  
+    axios.post('http://localhost:4000/createPost',formData)
+    .then(response => {
+      console.log(response);
+    })
   }
   return (
     <>

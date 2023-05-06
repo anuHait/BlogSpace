@@ -11,14 +11,14 @@ function blogBox(props) {
       <div className='flex flex-col gap-3 p-2'>
       <h2 className='text-md text-blue-500 font-semibold'>{props.cate}</h2>
       <h1 className='text-lg font-bold '>{props.title}</h1>
-     <p className=' text-md text-justify leading-0'>
+     <div className=' text-md text-justify leading-0'>
      <LinesEllipsis
      text={props.desc}
      maxLine='3'
      ellipsis='...'
      trimRight
      basedOn='letters'
-   /></p>
+   /></div>
       </div>
       
     </div>
