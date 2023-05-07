@@ -36,7 +36,7 @@ function CreatePost() {
     title: '',
     des: '',
     image: '.',
-    cate:[]
+    cate:[{}]
   });
   const handleChange = e => {
     setFormData({
@@ -72,7 +72,7 @@ function CreatePost() {
     const picurl=await uploadImg();
     //console.log(picurl)
    formData.image=picurl;
-    //console.log(formData)  
+    console.log(formData)  
     axios.post('http://localhost:4000/createPost',formData)
     .then(response => {
       console.log(response);
@@ -117,7 +117,7 @@ function CreatePost() {
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="cate" className='text-blue-500 text-2xl font-semibold'>Category</label>
-          <input type="text" className='border-2 border-blue-700 rounded-md w-[20vw]' name="cate" value={formData.cate} onChange={handleChange}/>
+          <input type="" className='border-2 border-blue-700 rounded-md w-[20vw]' name="cate" value={formData.cate} onChange={handleChange}/>
           </div>
           <button type="submit" className=' rounded-2xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold ' >
             Submit
