@@ -1,5 +1,5 @@
 import React from 'react'
-import desktop from "../assets/desktop.jpg"
+//import desktop from "../assets/desktop.jpg"
 import hey from "../assets/hey.jpeg"
 import LinesEllipsis from 'react-lines-ellipsis'
 function blogBox(props) {

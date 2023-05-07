@@ -80,7 +80,7 @@ function CreatePost() {
   }
   return (
     <>
-    <button onClick={handleShow} className='rounded-2xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold'>
+    <button onClick={handleShow} className='rounded-full bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold'>
     Create Post
     </button><br/>
       <Modal
