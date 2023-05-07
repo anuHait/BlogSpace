@@ -15,7 +15,7 @@ function blogBox(props) {
       {
         props.cate?.map((category)=>(
 
-          <h2 className='text-md text-blue-500'>{category}</h2>
+          <h2 className='text-lg font-semibold text-blue-500'>{category}</h2>
         ))
       }</div>
       <h1 className='text-lg font-bold '>{props.title}</h1>
