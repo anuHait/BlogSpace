@@ -11,7 +11,9 @@ function CreatePost() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const[img,setImg]=useState("");
-  const[url,setUrl]=useState("");
+ // const[url,setUrl]=useState("");
+ var inputArray;
+  
   const uploadImg=(image)=>{
     console.log("Upload fnc");
     console.log(img);
@@ -22,61 +24,53 @@ function CreatePost() {
     formData).then(
       (response)=>{
         console.log(response)
-        // console.log(response.data.secure_url);
          return response.data.secure_url;
-        // setUrl(response.data.secure_url);
-        // console.log(url);
       }
-      
-
     ).catch(err=>console.log(err))
    return secure_url 
   }
   const [formData, setFormData] = useState({
     title: '',
-    des: '',
+    description: '',
     image: '.',
-    cate:[{}]
+    category:[]
   });
   const handleChange = e => {
+    //const { name, value } = e.target;
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
-  };
-  // async function uploadImg(e) {
-  //   const data = new FormData();
-  //   console.log(img);
-  //   data.append("file", img);
-  //   data.append("upload_preset", preset_key);
-  //   data.append("cloud_name", cloudname);
-  //   await fetch(`https://api.cloudinary.com/v1_1/${cloudname}/upload`, {
-  //     method: "post",
-  //     body: data,
-  //   })
-  //     .then(
-  //       (resp) => resp.json()        
-  //       )
-  //     .then((data) => {
-  //       console.log(data)
-  //       setPicurl(data.secure_url);
-  //       console.log(data.url)
-  //       console.log(picurl)
-
-  //     })
-  //     .catch((err) => console.log("Error"));
-  // }
+  }
   const handleSubmit = async(e)=>{
     e.preventDefault();
     //console.log("Handle works");
     const picurl=await uploadImg();
+    handles();
     //console.log(picurl)
    formData.image=picurl;
+   formData.category=inputArray;
+
     console.log(formData)  
     axios.post('http://localhost:4000/createPost',formData)
     .then(response => {
       console.log(response);
     })
+  }
+  const [inputValue, setInputValue] = useState('');
+  //const [formData, setFormData] = useState(new FormData());
+const  [cat,setCat]=useState(new FormData());
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  }
+
+  const handles = (event) => {
+    //event.preventDefault();
+     inputArray = inputValue.split(' ');
+    inputArray.forEach((value, index) => {
+      cat.append(`input_${index}`, value.trim());
+    });
+    setCat(cat);
   }
   return (
     <>
@@ -101,14 +95,14 @@ function CreatePost() {
           <input type="text" className='border-2 border-blue-700 rounded-md h-38'  name="title" value={formData.title} onChange={handleChange} />
         </div>
           <div className='flex flex-col gap-2'>
-          <label htmlFor="des" className='text-blue-500 text-2xl font-semibold'>Description</label>
+          <label htmlFor="description" className='text-blue-500 text-2xl font-semibold'>Description</label>
           <TextareaAutosize
         aria-label="minimum height"
         minRows={12}
         className=' mb-12 text-md border-2 border-blue-700 rounded-md'
         placeholder="Your text area"
         style={{ minWidth: 200,maxWidth:1800 }}
-        name="des" value={formData.des} onChange={handleChange}
+        name="description" value={formData.description} onChange={handleChange}
         />
         </div>
           <div className='flex flex-col gap-2'>
@@ -117,7 +111,7 @@ function CreatePost() {
           </div>
           <div className='flex flex-col gap-2'>
           <label htmlFor="cate" className='text-blue-500 text-2xl font-semibold'>Category</label>
-          <input type="" className='border-2 border-blue-700 rounded-md w-[20vw]' name="cate" value={formData.cate} onChange={handleChange}/>
+          <input type="text" className='border-2 border-blue-700 rounded-md w-[20vw]' name="cate"  value={inputValue} onChange={handleInputChange}/>
           </div>
           <button type="submit" className=' rounded-2xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold ' >
             Submit

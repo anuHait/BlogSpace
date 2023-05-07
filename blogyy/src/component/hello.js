@@ -7,8 +7,8 @@ function Hello() {
     const handleAllClick = () => setTab("");
     const handleTechClick = () => setTab("Technology");
     const handleSportsClick = () => setTab("Sports");
-    const handleFashClick = () => setTab("fashion");
-    const handleTravClick = () => setTab("travel");
+    const handleFashClick = () => setTab("Fashion");
+    const handleTravClick = () => setTab("Travel");
 
     useEffect(()=>{
         axios.get(`http://localhost:4000/getPosts/${tab}`)

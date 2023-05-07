@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import {auth,provider,} from './creds'
 import { useCookies } from 'react-cookie';
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import cover from "../assets/cover.png"
 import { useNavigate } from "react-router";
 import axios from "axios"
-import Typewriter from 'typewriter-effect';
 import google from "../assets/google.png"
 import desktop from '../assets/desktop.png'
 function Login() {
@@ -61,13 +59,8 @@ function Login() {
     <div className='flex flex-col text-center items-center justify-center gap-4 w-[45vw] m-5'>
     <h1 className='text-4xl font-bold text-[#7a49c9]'>Welcome to Webimple</h1>
     <div className="text-2xl font-semibold text-blue-500">
-    <Typewriter 
-  options={{
-    strings: ['Scribble Share Engage ...'],
-    autoStart: true,
-    loop: true,
-  }}
-/></div>
+    Scribble Share Engage ...
+    </div>
     <p className='text-lg font-semibold leading-8'>We aim to provide informative and engaging content on a wide range of topics. Whether you're looking for expert advice on a specific subject, or simply seeking inspiration and entertainment, our team of knowledgeable writers has got you covered.
     From technology and science to lifestyle and culture, we delve into the latest trends, news, and opinions to bring you a fresh perspective on the world around us.</p>
     <div className=' rounded-3xl bg-gradient-to-r from-blue-500 to-[#AA77FF] text-white text-xl p-2 font-semibold flex flex-row gap-2' onClick={handleSubmit}
